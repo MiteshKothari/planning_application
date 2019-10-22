@@ -1,0 +1,27 @@
+# PostgreSQL. Versions 9.1 and up are supported.
+#
+# Install the pg driver:
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: planning_application_development
+
+ 
+test:
+  <<: *default
+  database: planning_application_test
+
+
+production:
+  <<: *default
+  database: planning_application_production
+  username: planning_application
+  password: <%= ENV['PLANNING_APPLICATION_DATABASE_PASSWORD'] %>
